@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A22D12426BBDA4A004B3AE8 /* ARViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A22D12326BBDA4A004B3AE8 /* ARViewContainer.swift */; };
+		3A22D12626BBDB47004B3AE8 /* CustomBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A22D12526BBDB47004B3AE8 /* CustomBox.swift */; };
+		3A22D12826BBDBA1004B3AE8 /* PKCanvasRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A22D12726BBDBA1004B3AE8 /* PKCanvasRepresentation.swift */; };
+		3A22D12C26BC0941004B3AE8 /* MNISTClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 3A22D12B26BC0941004B3AE8 /* MNISTClassifier.mlmodel */; };
 		3A64EF5626BA77CC00CC2C39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A64EF5526BA77CC00CC2C39 /* AppDelegate.swift */; };
 		3A64EF5826BA77CC00CC2C39 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A64EF5726BA77CC00CC2C39 /* ContentView.swift */; };
 		3A64EF5A26BA77CC00CC2C39 /* Experience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 3A64EF5926BA77CC00CC2C39 /* Experience.rcproject */; };
@@ -16,6 +20,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A22D12326BBDA4A004B3AE8 /* ARViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewContainer.swift; sourceTree = "<group>"; };
+		3A22D12526BBDB47004B3AE8 /* CustomBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBox.swift; sourceTree = "<group>"; };
+		3A22D12726BBDBA1004B3AE8 /* PKCanvasRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PKCanvasRepresentation.swift; sourceTree = "<group>"; };
+		3A22D12B26BC0941004B3AE8 /* MNISTClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MNISTClassifier.mlmodel; sourceTree = "<group>"; };
 		3A64EF5226BA77CC00CC2C39 /* ARTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A64EF5526BA77CC00CC2C39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A64EF5726BA77CC00CC2C39 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -59,10 +67,14 @@
 				3A64EF5526BA77CC00CC2C39 /* AppDelegate.swift */,
 				3A64EF5726BA77CC00CC2C39 /* ContentView.swift */,
 				3A64EF5926BA77CC00CC2C39 /* Experience.rcproject */,
+				3A22D12B26BC0941004B3AE8 /* MNISTClassifier.mlmodel */,
 				3A64EF5B26BA77D000CC2C39 /* Assets.xcassets */,
 				3A64EF6026BA77D000CC2C39 /* LaunchScreen.storyboard */,
 				3A64EF6326BA77D000CC2C39 /* Info.plist */,
 				3A64EF5D26BA77D000CC2C39 /* Preview Content */,
+				3A22D12326BBDA4A004B3AE8 /* ARViewContainer.swift */,
+				3A22D12526BBDB47004B3AE8 /* CustomBox.swift */,
+				3A22D12726BBDBA1004B3AE8 /* PKCanvasRepresentation.swift */,
 			);
 			path = ARTestApp;
 			sourceTree = "<group>";
@@ -145,7 +157,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A22D12626BBDB47004B3AE8 /* CustomBox.swift in Sources */,
+				3A22D12826BBDBA1004B3AE8 /* PKCanvasRepresentation.swift in Sources */,
+				3A22D12C26BC0941004B3AE8 /* MNISTClassifier.mlmodel in Sources */,
 				3A64EF5826BA77CC00CC2C39 /* ContentView.swift in Sources */,
+				3A22D12426BBDA4A004B3AE8 /* ARViewContainer.swift in Sources */,
 				3A64EF5626BA77CC00CC2C39 /* AppDelegate.swift in Sources */,
 				3A64EF5A26BA77CC00CC2C39 /* Experience.rcproject in Sources */,
 			);
