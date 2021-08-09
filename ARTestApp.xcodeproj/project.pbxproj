@@ -3,14 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		3A22D12426BBDA4A004B3AE8 /* ARViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A22D12326BBDA4A004B3AE8 /* ARViewContainer.swift */; };
 		3A22D12626BBDB47004B3AE8 /* CustomBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A22D12526BBDB47004B3AE8 /* CustomBox.swift */; };
 		3A22D12826BBDBA1004B3AE8 /* PKCanvasRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A22D12726BBDBA1004B3AE8 /* PKCanvasRepresentation.swift */; };
-		3A22D12C26BC0941004B3AE8 /* MNISTClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 3A22D12B26BC0941004B3AE8 /* MNISTClassifier.mlmodel */; };
+		3A22D15326BD64DE004B3AE8 /* GXUtilz in Frameworks */ = {isa = PBXBuildFile; productRef = 3A22D15226BD64DE004B3AE8 /* GXUtilz */; };
+		3A22D15526BD7471004B3AE8 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A22D15426BD7471004B3AE8 /* CanvasView.swift */; };
 		3A64EF5626BA77CC00CC2C39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A64EF5526BA77CC00CC2C39 /* AppDelegate.swift */; };
 		3A64EF5826BA77CC00CC2C39 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A64EF5726BA77CC00CC2C39 /* ContentView.swift */; };
 		3A64EF5A26BA77CC00CC2C39 /* Experience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 3A64EF5926BA77CC00CC2C39 /* Experience.rcproject */; };
@@ -23,7 +24,7 @@
 		3A22D12326BBDA4A004B3AE8 /* ARViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewContainer.swift; sourceTree = "<group>"; };
 		3A22D12526BBDB47004B3AE8 /* CustomBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBox.swift; sourceTree = "<group>"; };
 		3A22D12726BBDBA1004B3AE8 /* PKCanvasRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PKCanvasRepresentation.swift; sourceTree = "<group>"; };
-		3A22D12B26BC0941004B3AE8 /* MNISTClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MNISTClassifier.mlmodel; sourceTree = "<group>"; };
+		3A22D15426BD7471004B3AE8 /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 		3A64EF5226BA77CC00CC2C39 /* ARTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A64EF5526BA77CC00CC2C39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A64EF5726BA77CC00CC2C39 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -39,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A22D15326BD64DE004B3AE8 /* GXUtilz in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,7 +69,6 @@
 				3A64EF5526BA77CC00CC2C39 /* AppDelegate.swift */,
 				3A64EF5726BA77CC00CC2C39 /* ContentView.swift */,
 				3A64EF5926BA77CC00CC2C39 /* Experience.rcproject */,
-				3A22D12B26BC0941004B3AE8 /* MNISTClassifier.mlmodel */,
 				3A64EF5B26BA77D000CC2C39 /* Assets.xcassets */,
 				3A64EF6026BA77D000CC2C39 /* LaunchScreen.storyboard */,
 				3A64EF6326BA77D000CC2C39 /* Info.plist */,
@@ -75,6 +76,7 @@
 				3A22D12326BBDA4A004B3AE8 /* ARViewContainer.swift */,
 				3A22D12526BBDB47004B3AE8 /* CustomBox.swift */,
 				3A22D12726BBDBA1004B3AE8 /* PKCanvasRepresentation.swift */,
+				3A22D15426BD7471004B3AE8 /* CanvasView.swift */,
 			);
 			path = ARTestApp;
 			sourceTree = "<group>";
@@ -103,6 +105,9 @@
 			dependencies = (
 			);
 			name = ARTestApp;
+			packageProductDependencies = (
+				3A22D15226BD64DE004B3AE8 /* GXUtilz */,
+			);
 			productName = ARTestApp;
 			productReference = 3A64EF5226BA77CC00CC2C39 /* ARTestApp.app */;
 			productType = "com.apple.product-type.application";
@@ -130,6 +135,9 @@
 				Base,
 			);
 			mainGroup = 3A64EF4926BA77CC00CC2C39;
+			packageReferences = (
+				3A22D15126BD64DE004B3AE8 /* XCRemoteSwiftPackageReference "garpix_utils" */,
+			);
 			productRefGroup = 3A64EF5326BA77CC00CC2C39 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -158,8 +166,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A22D12626BBDB47004B3AE8 /* CustomBox.swift in Sources */,
+				3A22D15526BD7471004B3AE8 /* CanvasView.swift in Sources */,
 				3A22D12826BBDBA1004B3AE8 /* PKCanvasRepresentation.swift in Sources */,
-				3A22D12C26BC0941004B3AE8 /* MNISTClassifier.mlmodel in Sources */,
 				3A64EF5826BA77CC00CC2C39 /* ContentView.swift in Sources */,
 				3A22D12426BBDA4A004B3AE8 /* ARViewContainer.swift in Sources */,
 				3A64EF5626BA77CC00CC2C39 /* AppDelegate.swift in Sources */,
@@ -361,6 +369,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3A22D15126BD64DE004B3AE8 /* XCRemoteSwiftPackageReference "garpix_utils" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/GARPIX-iOS/garpix_utils.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.3.6;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3A22D15226BD64DE004B3AE8 /* GXUtilz */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3A22D15126BD64DE004B3AE8 /* XCRemoteSwiftPackageReference "garpix_utils" */;
+			productName = GXUtilz;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3A64EF4A26BA77CC00CC2C39 /* Project object */;
 }

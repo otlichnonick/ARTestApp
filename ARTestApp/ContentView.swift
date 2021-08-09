@@ -10,56 +10,43 @@ import RealityKit
 import PencilKit
 import ARKit
 import Vision
+import GXUtilz
 
 struct ContentView : View {
     @State var canvasView = PKCanvasView()
-    @State var digitPredicted = "NA"
-    private let textRecognitionWorkQueue = DispatchQueue(label: "VisionRequest", qos: .userInitiated, attributes: [], autoreleaseFrequency: .workItem)
+    @State var imageUrl: URL?
+    @State var showCanvas = false
     
     var body: some View {
-        VStack {
-            ARViewContainer(overlayText: $digitPredicted)
+        ZStack {
+            ARViewContainer(imageUrl: $imageUrl)
                 .edgesIgnoringSafeArea(.all)
             
-            PKCanvasRepresentation(canvasView: $canvasView)
-            
-            HStack {
+            VStack {
+                Spacer()
+                
                 Button(action: {
-                    let image = self.canvasView.drawing.image(from: self.canvasView.drawing.bounds, scale: 1.0)
-                    self.recognizeTextInImage(image)
-                    self.canvasView.drawing = PKDrawing()
+                    self.showCanvas.toggle()
                 }) {
-                    Text("Extract Digit")
+                    Text("Открыть холст")
+                        .foregroundColor(.white)
+                        .fontWeight(.bold)
+                        .padding(.horizontal)
                 }
-                Text(digitPredicted)
+                .frame(height: 40, alignment: .center)
+                .background(Color.blue)
+                .cornerRadius(10)
+                .padding(.bottom, 20)
             }
         }
-    }
-    
-    private func recognizeTextInImage(_ image: UIImage) {
-        guard let cgImage = image.cgImage else { return }
-        let model = try! VNCoreMLModel(for: MNISTClassifier(configuration: MLModelConfiguration()).model)
-        let request = VNCoreMLRequest(model: model)
-        
-        textRecognitionWorkQueue.async {
-            let requestHandler = VNImageRequestHandler(cgImage: cgImage, options: [:])
-            do {
-                try requestHandler.perform([request])
-                if let observations = request.results as? [VNClassificationObservation] {
-                    debugPrint("observations = \(observations)")
-                    self.digitPredicted = observations.first?.identifier ?? ""
-                }
-            } catch {
-                print("error with observations = \(error.localizedDescription)")
-            }
+        .sheet(isPresented: $showCanvas) {
+            CanvasView(imageUrl: $imageUrl, canvasView: $canvasView, showCanvas: $showCanvas)
         }
     }
 }
 
-#if DEBUG
 struct ContentView_Previews : PreviewProvider {
     static var previews: some View {
         ContentView()
     }
 }
-#endif

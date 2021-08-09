@@ -10,23 +10,22 @@ import RealityKit
 import ARKit
 
 struct ARViewContainer: UIViewRepresentable {
-    @Binding var overlayText: String
+    @Binding var imageUrl: URL?
     
     func makeCoordinator() -> ARViewCoordinator {
-        ARViewCoordinator(self, overlayText: $overlayText)
+        ARViewCoordinator(self, imageUrl: $imageUrl)
     }
     
     func makeUIView(context: Context) -> ARView {
         
         let arView = ARView(frame: .zero)
-        arView.addCoaching()
         
         let config = ARWorldTrackingConfiguration()
         config.planeDetection = .horizontal
-        
         arView.session.run(config, options: [])
 
         arView.setupGesture()
+        arView.addCoaching()
         arView.session.delegate = context.coordinator
 
         return arView
@@ -37,11 +36,11 @@ struct ARViewContainer: UIViewRepresentable {
 
 class ARViewCoordinator: NSObject, ARSessionDelegate {
     var arVC: ARViewContainer
-    @Binding var overlayText: String
+    @Binding var imageUrl: URL?
     
-    init(_ control: ARViewContainer, overlayText: Binding<String>) {
+    init(_ control: ARViewContainer, imageUrl: Binding<URL?>) {
         self.arVC = control
-        _overlayText = overlayText
+        _imageUrl = imageUrl
     }
     
     func session(_ session: ARSession, didUpdate frame: ARFrame) {
@@ -57,13 +56,10 @@ extension ARView {
     
     @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
         guard let touchInView = sender?.location(in: self) else { return }
-        
-        rayCastingMethod(point: touchInView)        
+        rayCastingMethod(point: touchInView)
     }
     
     func rayCastingMethod(point: CGPoint) {
-        guard let coordinator = self.session.delegate as? ARViewCoordinator else { return }
-        
         guard let raysastQuery = self.makeRaycastQuery(from: point,
                                                        allowing: .existingPlaneInfinite,
                                                        alignment: .horizontal) else {
@@ -76,32 +72,18 @@ extension ARView {
             return
         }
         
+        guard let coordinator = self.session.delegate as? ARViewCoordinator else { return }
+        
         let transformation = Transform(matrix: result.worldTransform)
-        let box = CustomBox(color: .yellow)
-        self.installGestures(.all, for: box)
+        let box = CustomBox(imageUrl: coordinator.imageUrl)
         box.generateCollisionShapes(recursive: true)
-        
-        let mesh = MeshResource.generateText(
-            coordinator.overlayText,
-            extrusionDepth: 0.1,
-            font: .systemFont(ofSize: 1),
-            containerFrame: .zero,
-            alignment: .left,
-            lineBreakMode: .byTruncatingTail
-        )
-        
-        let material = SimpleMaterial(color: .red, isMetallic: false)
-        let entity = ModelEntity(mesh: mesh, materials: [material])
-        entity.scale = SIMD3<Float>(0.03, 0.03, 0.1)
-        
-        box.addChild(entity)
         box.transform = transformation
-        
-        entity.setPosition(SIMD3<Float>(0, 0.05, 0), relativeTo: box)
-        
+                
         let raycastAnchor = AnchorEntity(raycastResult: result)
         raycastAnchor.addChild(box)
+        self.installGestures(.all, for: box)
         self.scene.addAnchor(raycastAnchor)
+        box.addCollisions()
     }
 }
 
